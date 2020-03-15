@@ -44,7 +44,8 @@
 <script>
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-//import axios from 'axios'//引号里的名字对应package.js里包的名字
+import axios from 'axios'//引号里的名字对应package.js里包的名字
+import URL from '@/service.config.js'
 export default {
  data() {
     return {
@@ -114,76 +115,6 @@ export default {
       },
       //猜你喜欢
       varietyItem:[
-        {
-          name:"华为 HUAWEI Mate 30 Pro 5G 麒麟990 OLED环幕屏双4000万徕卡电影四摄8GB+256GB亮黑色5G全网通游戏手机",
-          img:'http://img5.imgtn.bdimg.com/it/u=3720661285,1522818110&fm=26&gp=0.jpg',
-          price:'6100',
-          company:'huawei',
-          city:'shenzhen'
-        },
-        {
-          name:"OPPO Find X2 超感官旗舰 3K分辨率 120Hz超感屏 多焦段影像系统 骁龙865 65w闪充 8GB+128GB碧波 双模5G手机",
-          img:'http://attach.bbs.miui.com/forum/201311/17/174124tp3sa6vvckc25oc8.jpg',
-          price:'6100',
-          company:'oppo有限公司',
-          city:'beijing'
-        },
-        {
-          name:"Apple iPhone 11 (A2223) 128GB 黑色 移动联通电信4G手机 双卡双待",
-          img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584129102709&di=545230c140593b2cf23a3410b84f1e24&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201202%2F06%2F002616frowmyworz64hnyo.jpg',
-          price:'5299',
-          company:'apple有限公司',
-          city:'America'
-        },
-        {
-          name:"小米10 双模5G 骁龙865 1亿像素8K电影相机 对称式立体声 8GB+256GB 蜜桃金 拍照智能新品游戏手机",
-          img:'http://00.minipic.eastday.com/20171012/20171012093130_c5d819710d4f442b3f6ee90a4a7e1d9e_1.jpeg',
-          price:'1999',
-          company:'xiaomi有限公司',
-          city:'beijing'
-        },
-        {
-          name:"samsung 三星 Galaxy S20+ 5G 双模5G 骁龙865 120Hz超感屏 8K视频 游戏手机 12GB+128GB 幻游黑",
-          img:'http://b-ssl.duitang.com/uploads/item/201505/01/20150501123837_ruLyt.jpeg',
-          price:'4999',
-          company:'samsung有限公司',
-          city:'Korea'
-        },
-        {
-          name:"vivo iQOO 3 12GB+128GB 驭影黑 高通骁龙865 55W超快闪充 专业电竞体验游戏手机 双模5G全网通手机 vivo",
-          img:'http://01.minipic.eastday.com/20170330/20170330044723_a0c69f758cc90e87e8c8e620eb55308e_2.jpeg',
-          price:'3100',
-          company:'vivo有限公司',
-          city:'beijing'
-        },
-        {
-          name:"OPPO Find X2 超感官旗舰 3K分辨率 120Hz超感屏 多焦段影像系统 骁龙865 65w闪充 8GB+128GB碧波 双模5G手机",
-          img:'http://attach.bbs.miui.com/forum/201311/17/174124tp3sa6vvckc25oc8.jpg',
-          price:'6100',
-          company:'oppo有限公司',
-          city:'beijing'
-        },
-        {
-          name:"Apple iPhone 11 (A2223) 128GB 黑色 移动联通电信4G手机 双卡双待",
-          img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584129102709&di=545230c140593b2cf23a3410b84f1e24&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201202%2F06%2F002616frowmyworz64hnyo.jpg',
-          price:'5299',
-          company:'apple有限公司',
-          city:'America'
-        },
-        {
-          name:"小米10 双模5G 骁龙865 1亿像素8K电影相机 对称式立体声 8GB+256GB 蜜桃金 拍照智能新品游戏手机",
-          img:'http://00.minipic.eastday.com/20171012/20171012093130_c5d819710d4f442b3f6ee90a4a7e1d9e_1.jpeg',
-          price:'1999',
-          company:'xiaomi有限公司',
-          city:'beijing'
-        },
-        {
-          name:"samsung 三星 Galaxy S20+ 5G 双模5G 骁龙865 120Hz超感屏 8K视频 游戏手机 12GB+128GB 幻游黑",
-          img:'http://b-ssl.duitang.com/uploads/item/201505/01/20150501123837_ruLyt.jpeg',
-          price:'4999',
-          company:'samsung有限公司',
-          city:'Korea'
-        },
       ]
     }
   },
@@ -192,9 +123,10 @@ export default {
     swiperSlide
   },
    created() {
-    //  axios.get().then(res=>{
-       
-    //  })
+     let url = URL.getVarietyItem
+     axios.get(url).then((res)=>{
+       this.varietyItem = res.data
+     })
    },
 }
 

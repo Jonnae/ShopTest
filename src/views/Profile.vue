@@ -24,7 +24,8 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from 'axios'
+import url from '@/service.config.js'
 export default {
   data() {
     return {
@@ -38,7 +39,7 @@ export default {
     //注册
     registHandler(){
       axios({
-        url:'',
+        url:url.registUser,
         method:'post',
         data:{
           userName: this.registUsername,

@@ -43,10 +43,17 @@ export default {
         method:'post',
         data:{
           userName: this.registUsername,
-          passWord: this.registPassword,
+          password: this.registPassword,
         }
       }).then(res=>{
-
+        if(res.data.code == 200){
+          console.log('注册成功')
+          this.registUsername = this.registPassword = ''
+        }else{
+          console.log('注册失败')
+        }
+      }).catch(err=>{
+          console.log('注册失败')
       })
     }
   },

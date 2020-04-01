@@ -7,7 +7,7 @@
           <van-field label="密码" placeholder="密码" required clearable v-model="loginPassword" type="password"></van-field>
         </van-cell-group>
         <div>
-          <van-button type="primary" size="large">登录</van-button>
+          <van-button @click="loginHandler" type="primary" size="large">登录</van-button>
         </div>
       </van-tab>
       <van-tab title="注册">
@@ -54,6 +54,27 @@ export default {
         }
       }).catch(err=>{
           console.log('注册失败')
+      })
+    }
+  },
+  //登录
+  registHandler(){
+      axios({
+        url:url.logintUser,
+        method:'post',
+        data:{
+          userName: this.loginUsername,
+          password: this.loginPassword,
+        }
+      }).then(res=>{
+        if(res.data.code == 200){
+          console.log('登录成功')
+          this.loginUsername = this.loginPassword = ''
+        }else{
+          console.log('登录失败')
+        }
+      }).catch(err=>{
+          console.log('登录失败')
       })
     }
   },

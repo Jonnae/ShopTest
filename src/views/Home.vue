@@ -68,7 +68,7 @@ export default {
       hotProducts:[
          {
           name:"huawei",
-          img:'http://img5.imgtn.bdimg.com/it/u=3720661285,1522818110&fm=26&gp=0.jpg',
+          img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585658652121&di=54583f770c201ccd499bb2fa0c814bdf&imgtype=0&src=http%3A%2F%2Fb.zol-img.com.cn%2Fsoft%2F5%2F493%2FceNcIqcSrEEgE.jpg',
           price:'6100',
           company:'huawei',
           city:'shenzhen'

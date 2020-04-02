@@ -26,6 +26,7 @@
 <script>
 import axios from 'axios'
 import url from '@/service.config.js'
+import {mapActions} from 'vuex'
 export default {
   data() {
     return {
@@ -36,6 +37,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['loginAction']),
     //注册
     registHandler(){
       axios({
@@ -55,10 +57,9 @@ export default {
       }).catch(err=>{
           console.log('注册失败')
       })
-    }
-  },
-  //登录
-  registHandler(){
+    },
+    //登录
+  loginHandler(){
       axios({
         url:url.logintUser,
         method:'post',
@@ -67,17 +68,33 @@ export default {
           password: this.loginPassword,
         }
       }).then(res=>{
+        console.log(res)
         if(res.data.code == 200){
-          console.log('登录成功')
-          this.loginUsername = this.loginPassword = ''
-        }else{
-          console.log('登录失败')
+          //模拟网络延迟
+          new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+              resolve()
+            },1000);
+          }).then(()=>{
+            console.log('登录成功');
+            //保存登录状态
+            this.loginAction(res.data.userInfo)
+            
+            this.$router.push('/');//跳转首页，路径与路由对应
+          }).catch(err=>{
+            console.log('登录失败');
+            console.log('err');
+
+          })
         }
       }).catch(err=>{
-          console.log('登录失败')
+        console.log(err)
+        
       })
     }
+    
   },
+  
 }
 
 </script>

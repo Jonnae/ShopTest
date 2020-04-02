@@ -44,6 +44,7 @@
 <script>
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import {mapState} from 'vuex'
 import axios from 'axios'//引号里的名字对应package.js里包的名字
 import URL from '@/service.config.js'
 export default {

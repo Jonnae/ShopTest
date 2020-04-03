@@ -1,5 +1,5 @@
-import Vue  from 'vue'
-import Vuex  from 'vuex' 
+import Vue from 'vue'
+import Vuex from 'vuex' 
 
 Vue.use(Vuex)
 
@@ -14,13 +14,13 @@ export default new Vuex.Store({
 
     },
     mutations:{//相当于函数,改变state的唯一途径,这里面不能处理异步的操作
-        changLogin(state,status){
+        changeLogin(state,status){
             state.userInfo = status;
         }
     },
     actions:{//可调用mutations的方法，进而改变state的值。里面可以异步操作
         loginAction({commit},user){
-            commit('changLogin',user);
+            commit('changeLogin',user);
         }
     }
 })

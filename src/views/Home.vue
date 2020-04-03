@@ -1,8 +1,8 @@
 <template>
   <div class="container">
   <van-nav-bar title="首页" class="nav-title">
-    <van-icon name="search" slot="left" />
-    <van-icon name="cart-o" slot="right" />
+    <van-icon name="search" slot="left"></van-icon>
+    <van-icon  slot="right">{{userInfo.userName}}</van-icon>
   </van-nav-bar>
 
   <!-- 轮播图 -->
@@ -129,7 +129,11 @@ export default {
        this.varietyItem = res.data
      })
    },
-}
+   computed: {
+      ...mapState(['userInfo']),
+      
+   },
+};
 
 </script>
 

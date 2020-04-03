@@ -78,7 +78,7 @@ export default {
           }).then(()=>{
             console.log('登录成功');
             //保存登录状态
-            this.loginAction(res.data.userInfo)
+            this.loginAction(res.data.userInfo);
             
             this.$router.push('/');//跳转首页，路径与路由对应
           }).catch(err=>{

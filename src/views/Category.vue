@@ -13,13 +13,20 @@
 
 <script>
 import axios from 'axios';
-import url from '@/service.config.js';
+import URL from '@/service.config.js';
 export default{
+  data() {
+    return {
+      types: [] //类型信息
+    }
+  },
 created() {
-  axios({
-    url: url.getTypes
-  }).then(res=>{
+  let url = URL.getTypes
+  axios(
+    url
+  ).then(res=>{
     console.log(res)
+    this.types = res.data;
   }).catch(err=>{
     console.log(err)
   });

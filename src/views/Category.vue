@@ -13,13 +13,15 @@
           </ul>
         </van-col>
         <van-col span="18" class="container">
-          <van-list class="content">
+          <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+          <van-list class="content" @load="onLoad" v-model="isLoading" :finished="finished">
             <div class="content-item" v-for="(item,index) in productList" :key="index">
               <img :src="item.img" alt="">
               <p class="content-item-name">{{item.name}}</p>
               <p >¥{{item.price}}</p>
             </div>
           </van-list>
+          </van-pull-refresh>
         </van-col>
       </van-row>
     </div>
@@ -39,6 +41,8 @@ export default{
       typeId: 1,//当前选中类型的id
       start: 0,
       limit: 10,
+      finished: false,//数据是否取完
+      isLoading: false,
     }
   },
 created() {
@@ -58,24 +62,41 @@ methods: {
   selectCategory(typeId,index){
     this.active = index;
     this.typeId = typeId;
+    this.productList = [];//每次选择后清空列表重新加载
+    this.finished = false;
+
     this.getProductList();
   },
   getProductList(){
+    this.isLoading = true;
     axios({
       url:URL.getProductListByType,
       method: 'get',
       params:{
         typeId:this.typeId,
-        start: this.start,
+        start: this.productList.length,
         limit: this.limit,
       } 
     }).then((res)=>{
-      console.log(res)
-      this.productList = res.data;
+      // console.log(res)
+      if(res.data.length != 0){
+      this.productList = this.productList.concat(res.data);
+
+      }else{
+        this.finished = true;
+      }
+     this.isLoading = false;
       
     }).catch((err)=>{
       console.log(err)
-    })
+      })
+    },
+  onLoad(){
+    this.getProductList();
+  },
+  onRefresh(){
+    this.productList = [];
+    this.getProductList();
   },
   },
   

@@ -5,7 +5,8 @@ const URL = {
     getVarietyItem: MOCKURL + 'getVarietyItem',
     registUser: SERVEURL + 'user/registUser',//user对应后端控制器controller,registUser对应user下面的一个方法
     logintUser: SERVEURL + 'user/logintUser',
-    getTypes: SERVEURL + 'type/getTypes'
+    getTypes: SERVEURL + 'type/getTypes',
+    getProductListByType: SERVEURL + 'product/getProductListByType',
 
 };
 

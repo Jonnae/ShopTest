@@ -5,10 +5,22 @@
       <van-row>
         <van-col span="6" class="nav">
           <ul>
-            <li @click="selectCategory(item.typeId,index)" v-for="(item,index) in types" :key="index" :class="{active:active == index}">{{item.typeName}}</li>
+            <li @click="selectCategory(item.typeId,index)" 
+            v-for="(item,index) in types" :key="index" 
+            :class="{active:active == index}">
+            {{item.typeName}}
+            </li>
           </ul>
         </van-col>
-        <van-col span="18" class="container"></van-col>
+        <van-col span="18" class="container">
+          <van-list class="content">
+            <div class="content-item" v-for="(item,index) in productList" :key="index">
+              <img :src="item.img" alt="">
+              <p class="content-item-name">{{item.name}}</p>
+              <p >¥{{item.price}}</p>
+            </div>
+          </van-list>
+        </van-col>
       </van-row>
     </div>
 
@@ -23,6 +35,10 @@ export default{
     return {
       types: [], //类型信息
       active: 0,
+      productList: [],
+      typeId: 1,//当前选中类型的id
+      start: 0,
+      limit: 10,
     }
   },
 created() {
@@ -32,6 +48,7 @@ created() {
   ).then(res=>{
     console.log(res)
     this.types = res.data;
+    this.selectCategory(this.typeId,this.active)
   }).catch(err=>{
     console.log(err)
   });
@@ -40,8 +57,28 @@ created() {
 methods: {
   selectCategory(typeId,index){
     this.active = index;
-  }
-},
+    this.typeId = typeId;
+    this.getProductList();
+  },
+  getProductList(){
+    axios({
+      url:URL.getProductListByType,
+      method: 'get',
+      params:{
+        typeId:this.typeId,
+        start: this.start,
+        limit: this.limit,
+      } 
+    }).then((res)=>{
+      console.log(res)
+      this.productList = res.data;
+      
+    }).catch((err)=>{
+      console.log(err)
+    })
+  },
+  },
+  
 
 }
 
@@ -57,8 +94,36 @@ methods: {
       padding: 3px;
       text-align: center;
     }
-  }
-  .active{
+    .active{
     background-color: #fff;
+    }
+  }
+
+  .container{
+    position: fixed;
+    top: 46px;
+    bottom: 1rem;
+    right: 0;
+    overflow-y: scroll;
+  }
+  .content{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    &-item{
+      width:40%;
+      padding:0 10px;
+      img{
+        width: 2rem;
+        height: 2rem;
+      }
+      &-name{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow:hidden;
+        text-overflow: ellipsis;
+      }
+    }
   }
 </style>

@@ -4,13 +4,14 @@ import Home from '../views/Home.vue'
 import Category from '../views/Category.vue'
 import Cart from '../views/Cart.vue'
 import Profile from '../views/Profile.vue'
+import Detail from '../views/Detail.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home
   },
   {
@@ -28,7 +29,11 @@ const routes = [
     name: 'profile',
     component: Profile
   },
-  
+  {
+    path: '/detail',
+    name: 'detail',
+    component: Detail
+  },
 ]
 
 const router = new VueRouter({

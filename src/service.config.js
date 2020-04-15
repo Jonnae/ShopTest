@@ -7,7 +7,7 @@ const URL = {
     logintUser: SERVEURL + 'user/logintUser',
     getTypes: SERVEURL + 'type/getTypes',
     getProductListByType: SERVEURL + 'product/getProductListByType',
-
+    getDetail: SERVEURL + 'product/getDetail'
 };
 
 export default URL;

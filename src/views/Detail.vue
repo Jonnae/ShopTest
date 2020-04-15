@@ -5,9 +5,22 @@
 </template>
 
 <script>
+import axios from 'axios';
+import URL from '@/service.config.js';
     export default {
       created() {
-          console.log(this.$route.params.id)
+         
+          axios({
+              url: URL.getDetail,
+              method:'get',
+              params:{
+                  id:this.$route.params.id,
+              }
+          }).then(res=>{
+            console.log(res)
+          }).catch(err=>{
+            console.log(err)
+          })
       },  
     }
 </script>

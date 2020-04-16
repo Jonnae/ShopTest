@@ -50,7 +50,7 @@ created() {
   axios(
     url
   ).then(res=>{
-    console.log(res)
+    // console.log(res)
     this.types = res.data;
     this.selectCategory(this.typeId,this.active)
   }).catch(err=>{

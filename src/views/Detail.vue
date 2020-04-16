@@ -1,6 +1,6 @@
 <template>
     <div>
-/detail
+      {{detail.name}}
     </div>
 </template>
 
@@ -8,6 +8,11 @@
 import axios from 'axios';
 import URL from '@/service.config.js';
     export default {
+      data() {
+        return {
+          detail:{},
+        }
+      },
       created() {
          
           axios({
@@ -17,7 +22,8 @@ import URL from '@/service.config.js';
                   id:this.$route.params.id,
               }
           }).then(res=>{
-            console.log(res)
+            console.log(res.data);
+            this.detail = res.data;
           }).catch(err=>{
             console.log(err)
           })

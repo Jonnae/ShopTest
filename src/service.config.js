@@ -8,7 +8,8 @@ const URL = {
     getTypes: SERVEURL + 'type/getTypes',
     getProductListByType: SERVEURL + 'product/getProductListByType',
     getDetail: SERVEURL + 'product/getDetail',
-    addCart: SERVEURL + 'cart/addCart'
+    addCart: SERVEURL + 'cart/addCart',
+    getCart: SERVEURL + 'cart/getCart'
 };
 
 export default URL;

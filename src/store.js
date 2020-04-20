@@ -5,9 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:{//数据存储
-        userInfo:{
-            userName:'未登录'
-        }
+        userInfo: {}
 
     },
     getters:{//类似计算属性

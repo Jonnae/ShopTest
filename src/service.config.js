@@ -7,7 +7,8 @@ const URL = {
     logintUser: SERVEURL + 'user/logintUser',
     getTypes: SERVEURL + 'type/getTypes',
     getProductListByType: SERVEURL + 'product/getProductListByType',
-    getDetail: SERVEURL + 'product/getDetail'
+    getDetail: SERVEURL + 'product/getDetail',
+    addCart: SERVEURL + 'cart/addCart'
 };
 
 export default URL;

@@ -80,7 +80,7 @@ export default {
             //保存登录状态
             this.loginAction(res.data.userInfo);
             
-            this.$router.push('/');//跳转首页，路径与路由对应
+            this.$router.go(-2);//返回上一页
           }).catch(err=>{
             console.log('登录失败');
             console.log('err');

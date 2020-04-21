@@ -2,9 +2,15 @@
   <div>
     <van-nav-bar title="购物车" ></van-nav-bar>
     <div class="card">
-      <van-card v-for="(item,index) in productList" :key="index" :price="item.price"  :title="item.name" :thumb="item.img"/> 
+      <van-card v-for="(item,index) in productList" :key="index" :price="item.price"  :title="item.name" :thumb="item.img"> 
+        
+         <template #footer>
+          <van-button size="mini" @click="delCart(item.id,index)">删除</van-button>
+        </template>
+        
+      </van-card>
     </div>
-    
+    <van-submit-bar class="submit-bar" :price="totalPrice" button-text="提交订单" @submit="onSubmit" />
   </div>
 </template>
 
@@ -16,11 +22,19 @@ import {mapState} from 'vuex'
   export default {
     data() {
       return {
-        productList: [],
+        productList: [],  
+			total:0,
       }
     },
     computed: {
-        ...mapState(['userInfo'])
+        ...mapState(['userInfo']),
+        totalPrice(){
+          return this.productList.reduce((sum,elem)=>{
+              elem.price =  parseFloat(elem.price)
+              sum += elem.price;
+              return sum
+          },0) *10*10;
+        }
       },
     created() {
       if(JSON.stringify(this.userInfo) === '{}'){
@@ -46,11 +60,27 @@ import {mapState} from 'vuex'
             })
           }
     },
+    methods: {
+      onSubmit(){
+        // this.total = 0;
+        // for(let i = 0;i < this.productList.length;i++){
+        //   console.log(this.productList[i].price)
+        //   this.total+=this.productList[i].price;
+        // }
+      
+
+      },
+      delCart(id,index){
+        //删除数据库中的数据，如果删除成功，进入回调函数，在回调函数中：
+      },
+    },
      
       
   }
 </script>
 
 <style lang="scss" scoped>
-
+.submit-bar{
+  margin-bottom: 1rem;
+}
 </style>

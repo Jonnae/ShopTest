@@ -35,7 +35,7 @@ import {mapState} from 'vuex'
                 userId: this.userInfo._id,
               }
             }).then(res=>{
-                
+                console.log(res)
                 for(let item of res.data){
                   // productList[i].push(item[i])
                   this.productList.push(item.productId)

@@ -77,7 +77,11 @@ import {mapState} from 'vuex'
               }
         }).then(res=>{
           console.log(res)
+          if(res.status == '200'){
           this.productList.splice(index,1);
+          console.log('删除成功!')
+          }
+          
         }).catch(err=>{
           console.log(err)
         })

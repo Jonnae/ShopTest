@@ -67,7 +67,6 @@ import {mapState} from 'vuex'
       },
       delCart(id,index){
         //删除数据库中的数据，如果删除成功，进入回调函数，在回调函数中：
-
         axios({
               url: URL.delCart,
               method:'get',

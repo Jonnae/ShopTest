@@ -2,7 +2,7 @@
   <div class="container">
   <van-nav-bar title="首页" class="nav-title">
     <van-icon name="search" slot="left"></van-icon>
-    <van-icon  slot="right">{{JSON.stringify(userInfo) === '{}'?'未登录' : userInfo.userName}}</van-icon>
+    <van-icon @click="$router.push('/profile')" slot="right">{{JSON.stringify(userInfo) === '{}'?'未登录' : userInfo.userName}}</van-icon>
   </van-nav-bar>
 
   <!-- 轮播图 -->
@@ -136,7 +136,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .container{
     background-color: #eeeeee;
   }

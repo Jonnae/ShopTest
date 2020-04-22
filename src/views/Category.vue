@@ -114,7 +114,7 @@ methods: {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .nav{
     background-color: #eee;
     li{

@@ -5,7 +5,7 @@
       <van-card v-for="(item,index) in productList" :key="index" :price="item.price"  :title="item.name" :thumb="item.img"> 
         
          <template #footer>
-          <van-button size="mini" @click="delCart(item.id,index)">删除</van-button>
+          <van-button size="mini" @click="delCart(item._id,index)">删除</van-button>
         </template>
         
       </van-card>
@@ -62,16 +62,25 @@ import {mapState} from 'vuex'
     },
     methods: {
       onSubmit(){
-        // this.total = 0;
-        // for(let i = 0;i < this.productList.length;i++){
-        //   console.log(this.productList[i].price)
-        //   this.total+=this.productList[i].price;
-        // }
       
 
       },
       delCart(id,index){
         //删除数据库中的数据，如果删除成功，进入回调函数，在回调函数中：
+
+        axios({
+              url: URL.delCart,
+              method:'get',
+              params:{
+                userId: this.userInfo._id,
+                productId: id,
+              }
+        }).then(res=>{
+          console.log(res)
+          this.productList.splice(index,1);
+        }).catch(err=>{
+          console.log(err)
+        })
       },
     },
      

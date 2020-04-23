@@ -11,6 +11,7 @@ let Profile=()=>import('../views/Profile.vue')
 
 import Detail from '../views/Detail.vue'
 import FooterBar from '../components/FooterBar.vue'
+import Error from '../views/Error.vue'
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,10 @@ const routes = [
     name: 'detail',
     component: Detail
   },
+  {
+    path: '*',
+    component:Error
+  }
 ]
 
 const router = new VueRouter({

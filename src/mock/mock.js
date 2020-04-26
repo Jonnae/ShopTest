@@ -13,13 +13,13 @@ import Mock from 'mockjs'
 //     'regexp':/\d{2,5}/
 // })
 let Random = Mock.Random
-let productData = () =>{
+let productData = () => {
     let productList = [] //存放商品信息数组
-    for(let i = 0;i < 50; i++){
+    for (let i = 0; i < 50; i++) {
         let product = {
-            name: Random.ctitle(5,50),
-            img: Random.dataImage('125x125','手机'+Random.integer(1,50)),
-            price: Random.integer(999,7999),
+            name: Random.ctitle(5, 50),
+            img: Random.dataImage('125x125', '手机' + Random.integer(1, 50)),
+            price: Random.integer(999, 7999),
             owner: Random.cname(),
         }
         productList.push(product)
@@ -27,4 +27,4 @@ let productData = () =>{
     return productList
 }
 
-Mock.mock('http://www.123.com/getVarietyItem',productData)
+Mock.mock('http://www.123.com/getVarietyItem', productData)

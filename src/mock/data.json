@@ -1,18 +1,18 @@
 {
-    "list":[
-    {
-       "name":"zhangsan",
-       "age":18,
-       "height":180
-    },
-    {
-        "name":"lisi",
-        "age":12,
-        "height":170
-     },
-     {
-        "name":"wangwu",
-        "age":10,
-        "height":160
-     }
-]}
+   "list": [{
+         "name": "zhangsan",
+         "age": 18,
+         "height": 180
+      },
+      {
+         "name": "lisi",
+         "age": 12,
+         "height": 170
+      },
+      {
+         "name": "wangwu",
+         "age": 10,
+         "height": 160
+      }
+   ]
+}

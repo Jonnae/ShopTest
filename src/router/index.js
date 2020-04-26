@@ -4,10 +4,10 @@ import VueRouter from 'vue-router'
 // import Category from '../views/Category.vue'
 // import Cart from '../views/Cart.vue'
 // import Profile from '../views/Profile.vue'
-let Home=()=>import('../views/Home.vue')
-let Category=()=>import('../views/Category.vue')
-let Cart=()=>import('../views/Cart.vue')
-let Profile=()=>import('../views/Profile.vue')
+let Home = () => import('../views/Home.vue')
+let Category = () => import('../views/Category.vue')
+let Cart = () => import('../views/Cart.vue')
+let Profile = () => import('../views/Profile.vue')
 
 import Detail from '../views/Detail.vue'
 import FooterBar from '../components/FooterBar.vue'
@@ -15,25 +15,24 @@ import Error from '../views/Error.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'home',
     // component: Home
-    components:{
-      default:Home,
-      'footer-bar':FooterBar
+    components: {
+      default: Home,
+      'footer-bar': FooterBar
     }
   },
   {
     path: '/category',
     name: 'category',
     // component: Category
-    components:{
-      default:Category,
-      'footer-bar':FooterBar
+    components: {
+      default: Category,
+      'footer-bar': FooterBar
     },
-    meta:{
+    meta: {
       keepAlive: true
     }
   },
@@ -41,18 +40,18 @@ const routes = [
     path: '/cart',
     name: 'cart',
     // component: Cart
-    components:{
-      default:Cart,
-      'footer-bar':FooterBar
+    components: {
+      default: Cart,
+      'footer-bar': FooterBar
     }
   },
   {
     path: '/profile',
     name: 'profile',
     // component: Profile
-    components:{
+    components: {
       default: Profile,
-      'footer-bar':FooterBar
+      'footer-bar': FooterBar
     }
   },
   {
@@ -62,7 +61,7 @@ const routes = [
   },
   {
     path: '*',
-    component:Error
+    component: Error
   }
 ]
 
